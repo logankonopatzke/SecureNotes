@@ -1,0 +1,2 @@
+# SecureNotes
+This is an engineering project written in python. The basic idea was a 'secure' system for saving data within a local database. This was my first real python project even though I've had python experience for a couple years. Overall, I learned a lot and grew a greater appreciation for the python language as a whole. I think it would be a fun challenge to rewrite this in Rust at some point in the future.
