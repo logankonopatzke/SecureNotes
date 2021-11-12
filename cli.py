@@ -1,9 +1,15 @@
 import auth
 import config
+import database
+
+def clear_console():
+    print(('\n'*1000))
 
 def get_user_input():
     print("{}@SecureNotes:~$ ".format(auth.get_current_user()), end='')
     user_input = input()
+
+    clear_console()
 
     return user_input
 
@@ -43,6 +49,7 @@ def handle_input(user_input):
         print("Password: ", end='')
         password = input()
 
+        clear_console()
         if auth.login(username, password): ## Attempt the login
             print("Welcome {}!".format(username))
         else:
@@ -53,14 +60,33 @@ def handle_input(user_input):
             auth_error()
             return
 
+        clear_console()
+
         print("Goodbye {}!".format(auth.get_current_user()))
         auth.logout()
 
     elif user_input == 4: ## Read data from the database
-        print("Not Yet Implemented!")## not yet implemented
+        if not auth.get_logged_in(): ## User shouldn't be able to read data if they aren't logged in yet
+            auth_error()
+            return
+
+        data = database.read_data()
+        print("Your data is: {}".format(data))
 
     elif user_input == 5: ## Write data into the database
-        print("Not Yet Implemented!")## not yet implemented
+        if not auth.get_logged_in(): ## User shouldn't be able to write data if they aren't logged in yet
+            auth_error()
+            return
+
+        print("Data: ", end='')
+        data = input()
+
+        clear_console()
+
+        if database.write_data(data):
+            print("Data written successfully!")
+        else:
+            print("Error: Failed to write data!")
 
     elif user_input == 6: ## Exit the program
         print("Thank you for using {}!".format(config.PROGRAM_NAME))

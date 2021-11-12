@@ -1,6 +1,8 @@
 import cli
 import config
 
+cli.clear_console()
+
 print("Welcome to {}".format(config.PROGRAM_NAME))
 
 print() ## Add some whitespace

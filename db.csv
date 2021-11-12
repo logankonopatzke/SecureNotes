@@ -4,4 +4,5 @@ username3, encrypted_password3, encrypted_data3
 username4, encrypted_password4, encrypted_data4
 username5, encrypted_password5, encrypted_data5
 username6, encrypted_password6, encrypted_data6
-u, p, d
+me,esecret,nodata
+logan,epassword,enothing
