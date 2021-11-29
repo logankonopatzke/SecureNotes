@@ -1,5 +1,6 @@
 import cli
 import config
+import crypt
 
 cli.clear_console()
 

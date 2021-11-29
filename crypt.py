@@ -1,7 +1,16 @@
-## THIS IS ONLY A TEMPORARY SOLUTION
+import base64
 
-def decrypt(data, key): ## Placeholder function
-    return "d{}".format(data)
+def encrypt(data, key):
+    new_data = data + key
+    message_bytes = new_data.encode('ascii')
+    msg = base64.b64encode(message_bytes)
 
-def encrypt(data, key): ## Placeholder function
-    return "e{}".format(data)
+    return msg.decode('ascii')
+
+
+def decrypt(data, key):
+    message_bytes = data.encode('ascii')
+    msg = base64.b64decode(message_bytes)
+    raw = msg.decode('ascii')
+
+    return raw[0:len(raw) - len(key)]

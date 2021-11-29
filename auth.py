@@ -37,6 +37,7 @@ def set_current_pass(password):
 def user_exists(username, password):
     db = database.read()
     encrypted_password = crypt.encrypt(password, password)
+    print("encp: {}".format(encrypted_password))
     for row in db:
         if row[0] == username and row[1] == encrypted_password:
             global logged_in
